@@ -1,141 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#06140f">
-  <meta name="description" content="Experiência interativa sobre as árvores gigantes da Amazônia.">
-  <title>AMAZONIA // Gigantes da Floresta</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="noise"></div>
-  <div class="orb orb-a"></div>
-  <div class="orb orb-b"></div>
-  <div class="grid-bg"></div>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#06110c"><title>AMAZÔNIA // Assistente de Campo</title><link rel="stylesheet" href="style.css"></head><body><div class="grid"></div><main><header><div class="brand"><b>AMZ<span>//</span>FIELD</b><small>ASSISTENTE DE CAMPO • GIGANTES DA AMAZÔNIA</small></div><div class="online"><i></i> ONLINE</div></header>
+<section id="start" class="screen active"><div class="hero"><div><div class="eyebrow">PROTOCOLO DE EXPLORAÇÃO</div><h1>Conheça as<br><em>gigantes</em> da<br>Amazônia.</h1><p>Uma experiência guiada para descobrir como as maiores árvores da floresta se conectam à água, ao carbono, ao clima, ao solo e à biodiversidade.</p><button id="start" class="primary">INICIAR EXPEDIÇÃO <span>↗</span></button></div><div class="visual"><div class="rings"></div><div class="tree">🌳</div><span class="tag t1">BIODIVERSIDADE</span><span class="tag t2">CO₂</span><span class="tag t3">H₂O</span><span class="tag t4">CANOPY</span></div></div><div class="metrics"><div><b>20</b><span>QUESTÕES</span></div><div><b>4</b><span>ALTERNATIVAS</span></div><div><b>20s</b><span>POR MISSÃO</span></div><div><b>∞</b><span>EXPEDIÇÕES</span></div></div></section>
+<section id="quiz" class="screen"><div class="qhead"><div><div class="eyebrow">CENTRAL DE CAMPO</div><strong id="counter"></strong></div><div class="score"><small>PONTOS</small><b id="score">0</b></div></div><div class="track"><div id="progress"></div></div><article class="card"><div class="meta"><span id="category"></span><span id="timer">20s</span></div><h2 id="question"></h2><div id="answers" class="answers"></div><div id="feedback" class="feedback" hidden><div id="feedback-icon" class="ficon">✓</div><div><b id="feedback-title"></b><p id="feedback-text"></p></div></div><div class="assistant"><i id="assistant-dot" class="assistant-dot"></i><span id="assistant-status">Selecione uma alternativa para continuar.</span></div></article></section>
+<section id="result" class="screen"><div class="result card"><div class="eyebrow">EXPEDIÇÃO CONCLUÍDA</div><h2 id="result-title">EXCELENTE DESEMPENHO</h2><div class="big"><b id="final-score">0</b><small> PTS</small></div><p id="result-message"></p><div class="stats"><div><b id="hits">0</b><span>ACERTOS</span></div><div><b id="misses">0</b><span>ERROS</span></div><div><b id="accuracy">0%</b><span>PRECISÃO</span></div></div><button id="info" class="primary">ABRIR DOSSIÊ <span>→</span></button><button id="restart" class="secondary">NOVA EXPEDIÇÃO</button></div></section>
+<section id="dossier" class="screen"><button id="back" class="back">← VOLTAR</button><div class="eyebrow">DOSSIÊ AMAZÔNIA</div><h2 class="dtitle">A floresta é um sistema.</h2><p class="lead">Árvores gigantes não são apenas paisagem. Elas fazem parte de uma rede ecológica que conecta água, carbono, solo, clima e biodiversidade.</p><div class="dgrid"><article><b>01</b><h3>Arquitetura viva</h3><p>Troncos, copas e cavidades criam diferentes microambientes.</p></article><article><b>02</b><h3>Água</h3><p>Raízes absorvem água e as folhas participam da transpiração.</p></article><article><b>03</b><h3>Carbono</h3><p>O carbono da fotossíntese é incorporado à biomassa vegetal.</p></article><article><b>04</b><h3>Castanheira</h3><p>Bertholletia excelsa é uma das espécies emblemáticas da Amazônia.</p></article><article><b>05</b><h3>Biodiversidade</h3><p>Frutos, flores, folhas e estruturas servem a muitos organismos.</p></article><article><b>06</b><h3>Conservação</h3><p>Proteger grandes árvores ajuda a preservar habitats e processos ecológicos.</p></article></div><button id="new-expedition" class="primary">NOVA EXPEDIÇÃO ↻</button></section><footer>AMZ//FIELD • CONHECIMENTO TAMBÉM É UMA FORMA DE CUIDAR.</footer></main><script>const QUESTIONS = [
+{c:'🌳 ESPÉCIES',q:'Qual árvore é conhecida pelo enorme porte e pelas grandes raízes tabulares?',a:['Sumaúma','Girassol','Capim-limão','Manjericão'],x:'A sumaúma (Ceiba pentandra) é uma árvore de grande porte e pode apresentar enormes raízes tabulares.'},
+{c:'🌿 ESTRUTURA',q:'Como se chama a camada formada principalmente pelas copas das árvores?',a:['Dossel','Subsolo','Serapilheira','Rocha-mãe'],x:'O dossel é a camada superior formada pelas copas e concentra grande atividade biológica.'},
+{c:'💧 ÁGUA',q:'Como as árvores devolvem parte da água à atmosfera?',a:['Pela transpiração','Produzindo água no tronco','Transformando chuva em pedra','Impedindo a evaporação'],x:'A transpiração libera vapor de água principalmente pelas folhas.'},
+{c:'🌰 CASTANHEIRA',q:'Qual espécie produz a castanha-do-brasil?',a:['Bertholletia excelsa','Hevea brasiliensis','Theobroma cacao','Coffea arabica'],x:'A castanheira-do-brasil é Bertholletia excelsa e produz as sementes conhecidas como castanha-do-brasil.'},
+{c:'☀️ FOTOSSÍNTESE',q:'Qual gás é utilizado pela árvore como matéria-prima na fotossíntese?',a:['Dióxido de carbono (CO₂)','Hélio (He)','Neônio (Ne)','Metano como fonte principal'],x:'A fotossíntese utiliza CO₂ e água, com energia luminosa, para produzir matéria orgânica.'},
+{c:'🐒 FAUNA',q:'Por que uma árvore gigante pode funcionar como um “prédio” para a fauna?',a:['Oferece vários microambientes em tronco, galhos e cavidades','Impede animais de chegar ao solo','Serve para apenas uma espécie','Não possui interação com organismos'],x:'Estruturas como cavidades, galhos, folhas, flores e frutos podem oferecer abrigo, alimento e locais de reprodução.'},
+{c:'◉ CARBONO',q:'Onde fica armazenado o carbono incorporado pela árvore?',a:['Na biomassa, como tronco, galhos e raízes','Somente nas flores','Somente no ar','Apenas na casca'],x:'O carbono assimilado fica incorporado à biomassa vegetal, incluindo troncos, galhos, folhas e raízes.'},
+{c:'🍂 SOLO',q:'O que acontece com folhas e galhos que caem no chão da floresta?',a:['Podem se decompor e participar da ciclagem de nutrientes','Viraram plástico naturalmente','Desaparecem sem transformação','Impedem toda vida do solo'],x:'A decomposição transforma matéria orgânica e participa da ciclagem de nutrientes do ecossistema.'},
+{c:'🌧️ CLIMA',q:'Qual relação entre vegetação e umidade é correta?',a:['A vegetação devolve parte da água à atmosfera por evapotranspiração','As árvores eliminam a umidade do ar','A floresta impede a formação de nuvens','A umidade existe somente nos rios'],x:'A evapotranspiração reúne a água liberada pelas plantas e a evaporação da superfície, contribuindo para a umidade do ar.'},
+{c:'🔬 CIÊNCIA',q:'Qual medida ajuda a acompanhar o crescimento de uma árvore?',a:['Diâmetro do tronco ao longo do tempo','Cor de uma única folha','Quantidade de nuvens','Uma única observação'],x:'Medições repetidas do diâmetro permitem acompanhar o crescimento da árvore ao longo dos anos.'},
+{c:'🌱 RAÍZES',q:'Qual é uma função importante das raízes?',a:['Fixar a planta e participar da absorção de água e nutrientes','Produzir luz solar','Transformar vento em alimento','Produzir somente frutos'],x:'As raízes ancoram a planta e participam da absorção de água e nutrientes.'},
+{c:'🦜 HABITAT',q:'Quais recursos uma árvore grande pode oferecer a outros seres vivos?',a:['Frutos, flores, folhas, cavidades e superfícies de abrigo','Somente minerais metálicos','Apenas água salgada','Nenhum recurso biológico'],x:'A arquitetura de uma árvore cria recursos e espaços usados por aves, insetos, mamíferos, fungos e outros organismos.'},
+{c:'⚠️ CONSERVAÇÃO',q:'Qual pode ser uma consequência da retirada de grandes árvores?',a:['Perda de habitat e alterações no funcionamento da floresta','Aumento garantido da biodiversidade','Nenhuma mudança possível','Aumento automático da umidade'],x:'A remoção pode alterar habitats, microclima, estoque de carbono e processos ecológicos.'},
+{c:'🌎 ECOLOGIA',q:'Por que árvores de grande porte são importantes para a floresta?',a:['Participam dos fluxos de água, carbono, energia e formação de habitats','Vivem isoladas do ecossistema','Impedem toda decomposição','Substituem todos os organismos'],x:'Grandes árvores participam de diversos processos ecológicos e influenciam o ambiente ao redor.'},
+{c:'🌰 SEMENTES',q:'Como animais podem contribuir para a regeneração de plantas?',a:['Consumindo frutos e ajudando a dispersar sementes','Impedindo toda germinação','Produzindo luz para as sementes','Transformando sementes em rochas'],x:'Animais podem transportar sementes para novos locais, ajudando na dispersão e regeneração da vegetação.'},
+{c:'🧬 TRANSPORTE',q:'Qual tecido vegetal conduz principalmente água das raízes para outras partes?',a:['Xilema','Floema exclusivamente','Pólen','Epiderme exclusivamente'],x:'O xilema conduz principalmente água e sais minerais das raízes para outras partes da planta.'},
+{c:'📐 ESTRATOS',q:'O que significa uma floresta possuir diferentes estratos de vegetação?',a:['Existirem camadas de plantas em diferentes alturas','Todas as árvores terem a mesma altura','Existir somente vegetação subterrânea','Não haver competição por luz'],x:'Os estratos representam diferentes níveis de altura, da vegetação baixa às árvores do dossel e emergentes.'},
+{c:'⚡ ENERGIA',q:'De onde vem a energia usada na fotossíntese?',a:['Da luz, principalmente da luz solar','Da gasolina','Do som dos animais','Da areia do solo'],x:'A energia luminosa é capturada por pigmentos fotossintéticos e usada nas reações da fotossíntese.'},
+{c:'🌿 PROTEÇÃO',q:'Qual ação é mais coerente com a proteção das árvores gigantes?',a:['Conservar florestas e usar recursos de forma responsável','Provocar queimadas sem controle','Retirar árvores sem planejamento','Substituir toda floresta por uma cultura'],x:'Conservar ecossistemas e usar recursos de forma responsável ajuda a manter árvores, habitats e serviços ambientais.'},
+{c:'🔭 VISÃO',q:'Por que estudar árvores gigantes ajuda a compreender a Amazônia?',a:['Porque elas estão conectadas à água, carbono, solo, clima e biodiversidade','Porque são independentes do ecossistema','Porque somente o tamanho importa','Porque não interagem com animais'],x:'As grandes árvores fazem parte de uma rede de processos ecológicos. Estudá-las ajuda a entender o funcionamento integrado da floresta.'}
+];
 
-  <main class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark"><span>✦</span></div>
-        <div>
-          <strong>AMAZONIA<span>//</span>GIGANTES</strong>
-          <small>Experiência interativa • Feira de Ciências</small>
-        </div>
-      </div>
-      <div class="status"><i></i> SISTEMA ONLINE</div>
-    </header>
-
-    <section id="start-screen" class="screen active">
-      <div class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow"><span></span> PROTOCOLO FLORESTA</div>
-          <h1>Entre no mundo das<br><em>árvores gigantes</em><br>da Amazônia.</h1>
-          <p class="hero-text">Uma experiência de conhecimento, velocidade e descoberta. Explore 20 perguntas sobre espécies, ecologia, água, carbono, biodiversidade e conservação.</p>
-          <div class="hero-actions">
-            <button id="start-btn" class="primary-btn">ENTRAR NA EXPERIÊNCIA <b>↗</b></button>
-            <div class="mini-note">20 questões • 20s por questão • pontuação dinâmica</div>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="scan-ring ring-1"></div>
-          <div class="scan-ring ring-2"></div>
-          <div class="tree-silhouette">🌳</div>
-          <div class="data-tag tag-1">BIODIVERSIDADE</div>
-          <div class="data-tag tag-2">CO₂</div>
-          <div class="data-tag tag-3">H₂O</div>
-          <div class="data-tag tag-4">CANOPY</div>
-        </div>
-      </div>
-
-      <div class="feature-grid">
-        <div><strong>20</strong><span>MISSÕES</span></div>
-        <div><strong>04</strong><span>ALTERNATIVAS</span></div>
-        <div><strong>20s</strong><span>POR QUESTÃO</span></div>
-        <div><strong>∞</strong><span>REPLAY</span></div>
-      </div>
-    </section>
-
-    <section id="quiz-screen" class="screen" aria-live="polite">
-      <div class="quiz-top">
-        <div>
-          <div class="eyebrow"><span></span> CENTRAL DE CONHECIMENTO</div>
-          <div id="question-label" class="question-label">QUESTÃO 01 / 20</div>
-        </div>
-        <div class="score-box"><small>PONTUAÇÃO</small><strong id="score-pill">0</strong></div>
-      </div>
-      <div class="progress-shell"><div id="progress-bar" class="progress-bar"></div></div>
-
-      <div class="question-card">
-        <div class="question-meta">
-          <span id="category">🌿 ECOLOGIA</span>
-          <span id="timer" class="timer">20s</span>
-        </div>
-        <h2 id="question"></h2>
-        <div id="answers" class="answers"></div>
-
-        <div id="feedback" class="feedback" hidden>
-          <div class="feedback-icon" id="feedback-icon">✓</div>
-          <div>
-            <strong id="feedback-title"></strong>
-            <p id="feedback-text"></p>
-          </div>
-        </div>
-        <div class="assistant-hint"><span class="assistant-dot"></span><span id="assistant-status">A assistente está analisando sua escolha...</span></div>
-      </div>
-      <div class="quiz-foot"><span>AMAZONIA // FIELD MODE</span><span>SELECIONE UMA ALTERNATIVA</span></div>
-    </section>
-
-    <section id="result-screen" class="screen">
-      <div class="result-card">
-        <div class="result-orbit">✦</div>
-        <div class="eyebrow"><span></span> MISSÃO CONCLUÍDA</div>
-        <h2 id="result-title">Excelente.</h2>
-        <div class="score-big"><span id="final-score">0</span><small> PTS</small></div>
-        <p id="result-message"></p>
-        <div class="stats">
-          <div><strong id="correct-count">0</strong><span>ACERTOS</span></div>
-          <div><strong id="wrong-count">0</strong><span>ERROS</span></div>
-          <div><strong id="accuracy">0%</strong><span>PRECISÃO</span></div>
-        </div>
-        <div class="result-actions">
-          <button id="info-btn" class="primary-btn">ACESSAR DOSSIÊ <b>→</b></button>
-          <button id="restart-btn" class="secondary-btn">REINICIAR</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="info-screen" class="screen">
-      <div class="info-header">
-        <div class="eyebrow"><span></span> DOSSIÊ AMAZÔNIA</div>
-        <h2>A floresta é um sistema.</h2>
-        <p>As árvores gigantes não são apenas elementos da paisagem. Elas conectam água, carbono, solo e biodiversidade em uma rede ecológica complexa.</p>
-      </div>
-      <div class="info-grid">
-        <article class="info-card"><span class="card-number">01</span><div class="info-icon">🌳</div><h3>Arquitetura viva</h3><p>Árvores de grande porte ajudam a formar o dossel e diferentes camadas da floresta, criando microambientes para muitas espécies.</p></article>
-        <article class="info-card"><span class="card-number">02</span><div class="info-icon">💧</div><h3>Floresta & água</h3><p>Pelas raízes, a planta absorve água; pelas folhas, parte dessa água retorna à atmosfera por transpiração.</p></article>
-        <article class="info-card"><span class="card-number">03</span><div class="info-icon">◉</div><h3>Carbono</h3><p>O carbono capturado na fotossíntese é incorporado à biomassa, incluindo troncos, galhos, folhas e raízes.</p></article>
-        <article class="info-card"><span class="card-number">04</span><div class="info-icon">🦜</div><h3>Rede de vida</h3><p>Flores, frutos, folhas, cavidades, troncos e galhos oferecem alimento, abrigo e locais de reprodução para organismos diversos.</p></article>
-        <article class="info-card"><span class="card-number">05</span><div class="info-icon">🌰</div><h3>Castanheira</h3><p>A castanheira-do-brasil, Bertholletia excelsa, é uma das árvores emblemáticas da Amazônia e produz a castanha-do-brasil.</p></article>
-        <article class="info-card"><span class="card-number">06</span><div class="info-icon">⚠</div><h3>Conservação</h3><p>A retirada de grandes árvores pode alterar habitats, microclima e processos ecológicos. Proteger a floresta protege essas conexões.</p></article>
-      </div>
-
-      <div class="project-panel">
-        <div><div class="eyebrow"><span></span> PROJETO</div><h3>Os Gigantes da Amazônia</h3><p>Experiência digital educativa desenvolvida para a Feira de Ciências da Escola Maria Benta.</p></div>
-        <div class="project-code">AMZ<br><b>01</b></div>
-      </div>
-
-      <div class="credits-card">
-        <div><div class="eyebrow"><span></span> CRÉDITOS</div><h3>Projeto educativo</h3></div>
-        <p><strong>Autor(a):</strong> Ian Aires</p>
-        <p><strong>Escola:</strong> Maria Benta</p>
-        <p><strong>Formato:</strong> HTML + CSS + JavaScript puro • GitHub Pages</p>
-      </div>
-      <div class="final-actions"><button id="info-restart-btn" class="primary-btn">NOVA EXPERIÊNCIA ↻</button></div>
-    </section>
-
-    <footer><span>AMAZONIA // GIGANTES DA FLORESTA</span><span>Conhecimento também é uma forma de cuidar.</span></footer>
-  </main>
-  <script src="script.js"></script>
-</body>
-</html>
+const $ = id => document.getElementById(id);
+let deck=[], current=0, score=0, hits=0, answered=false, seconds=20, timer=null;
+const letters=['A','B','C','D'];
+function shuffle(arr){const r=[...arr];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+function prepare(){deck=shuffle(QUESTIONS).map(q=>{const correct=q.a[0];return {...q, options:shuffle(q.a), correctText:correct};});}
+function screen(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0);}
+function setStatus(text,ok){$('assistant-status').textContent=text;$('assistant-dot').className='assistant-dot '+(ok?'ok':'');}
+function start(){clearInterval(timer);current=0;score=0;hits=0;prepare();$('score').textContent='0';screen('quiz');render();}
+function render(){clearInterval(timer);answered=false;seconds=20;const q=deck[current];$('counter').textContent=`QUESTÃO ${String(current+1).padStart(2,'0')} / 20`;$('category').textContent=q.c;$('question').textContent=q.q;$('progress').style.width=`${current/20*100}%`;$('timer').textContent='20s';$('feedback').hidden=true;setStatus('Selecione uma alternativa para continuar.',false);const box=$('answers');box.innerHTML='';q.options.forEach((text,i)=>{const b=document.createElement('button');b.className='answer';b.type='button';b.innerHTML=`<span class="letter">${letters[i]}</span><span>${text}</span>`;b.addEventListener('click',()=>choose(i,b));box.appendChild(b);});timer=setInterval(()=>{seconds--;$('timer').textContent=seconds+'s';if(seconds<=0){clearInterval(timer);if(!answered)choose(-1,null);}},1000);}
+function choose(i,button){if(answered)return;answered=true;clearInterval(timer);const q=deck[current];const buttons=[...document.querySelectorAll('.answer')];const right=q.options.indexOf(q.correctText);buttons.forEach((b,n)=>{b.disabled=true;if(n===right)b.classList.add('correct');});const ok=i===right;if(ok){hits++;score+=100+seconds*2;if(button)button.classList.add('correct');$('feedback-icon').textContent='✓';$('feedback-title').textContent='Resposta correta';$('feedback').className='feedback good';setStatus('Boa! Dados confirmados. Preparando a próxima missão…',true);}else{if(button)button.classList.add('wrong');$('feedback-icon').textContent='!';$('feedback-title').textContent=i<0?'Tempo esgotado':'Resposta incorreta';$('feedback').className='feedback bad';setStatus('Resposta analisada. Observe a explicação e siga em frente.',false);}$('feedback-text').textContent=q.x;$('feedback').hidden=false;$('progress').style.width=`${(current+1)/20*100}%`;setTimeout(()=>{if(!answered)return;if(current===19)finish();else{current++;render();}},ok?1050:1700);}
+function finish(){clearInterval(timer);const pct=Math.round(hits/20*100);$('final-score').textContent=score;$('hits').textContent=hits;$('misses').textContent=20-hits;$('accuracy').textContent=pct+'%';$('result-title').textContent=pct===100?'DOMÍNIO TOTAL':pct>=75?'EXCELENTE DESEMPENHO':pct>=50?'BOA EXPLORAÇÃO':'MISSÃO INICIADA';$('result-message').textContent=pct>=75?'Você demonstrou excelente domínio sobre as árvores gigantes e os processos ecológicos da Amazônia.': 'Cada resposta é uma descoberta. Consulte o dossiê e faça uma nova expedição para evoluir sua pontuação.';screen('result');}
+$('start').addEventListener('click',start);$('restart').addEventListener('click',start);$('back').addEventListener('click',()=>screen('start'));$('info').addEventListener('click',()=>screen('dossier'));$('new-expedition').addEventListener('click',start);</script></body></html>
